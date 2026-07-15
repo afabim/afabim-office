@@ -2,13 +2,13 @@
 
 **以 CAD 思維驅動的 Revit 高效自動化工具集**
 
-Afabim 是專門為 Revit 建築建照申請流程開發的 Python 工具集，主要目標不是取代 Revit，而是讓熟悉 AutoCAD 的使用者能更快速適應 BIM 工作流程。
+Afabim 是專門為 Revit 建築建照申請流程開發的 Pyrevit 工具集，主要目標不是取代 Revit，而是讓熟悉 AutoCAD 的使用者能更快速適應 BIM 工作流程。
 
 ---
 
 ## 一句話介紹
 
-> Afabim 是一套以 Python 與 Revit API 開發的 Revit 效率工具，將 AutoCAD 的操作習慣導入 Revit，簡化繁瑣流程，協助建築事務所快速完成建照申請圖，提高繪圖效率。
+> Afabim 是一套以 Pyrevit 與 Revit API 開發的 Revit 效率工具，將 AutoCAD 的操作習慣導入 Revit，簡化繁瑣流程，協助建築事務所快速完成建照申請圖，提高繪圖效率。
 
 ---
 
