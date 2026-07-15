@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afabim AI 助理</title>
+<style>
+  :root {
+    --bg: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --border: #E5E7EB;
+    --text-main: #111827;
+    --text-sub: #6B7280;
+    --accent: #7C3AED;
+    --btn-bg: #111827;
+    --btn-hover: #374151;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+    color: var(--text-main);
+  }
+  header {
+    padding: 32px 24px 8px;
+  }
+  header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  header p {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin: 0;
+  }
+  .search-bar {
+    max-width: 320px;
+    margin-top: 16px;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 24px 8px;
+  }
+  .filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text-sub);
+    font-family: inherit;
+  }
+  .filter-btn.active {
+    background: var(--btn-bg);
+    color: #fff;
+    border-color: var(--btn-bg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 16px 24px 48px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card .thumb {
+    width: 100%;
+    height: 150px;
+    background: #E5E7EB;
+    object-fit: cover;
+    display: block;
+  }
+  .card .body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card .category {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .card .title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    line-height: 1.4;
+  }
+  .card .desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+    flex: 1;
+    margin: 0 0 14px;
+  }
+  .card .launch {
+    display: block;
+    text-align: center;
+    background: var(--btn-bg);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .card .launch:hover {
+    background: var(--btn-hover);
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Afabim AI 助理</h1>
+  <p>點擊卡片直接啟動對應之 Gem 助理</p>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="搜尋 Gem 名稱或功能...">
+  </div>
+</header>
+
+<div class="filters" id="filters"></div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+// ============================================================
+// GEM 資料：對應原本 opengem.py 中的 GEMS 清單
+// image_filename 對應 GitHub repo 內檔名，本地找不到時改用 GITHUB_RAW 網路圖
+// ============================================================
+const GITHUB_RAW = "https://raw.githubusercontent.com/afabim/afabim-gems-images/main/";
+
+const GEMS = [
+  { title: "afabim產生建築體塊分析圖", desc: "從一張照片中-->產生建築體塊分析圖", category: "建築設計", link: "https://gemini.google.com/gem/23152dbb3eab", img: "gem1.jpg" },
+  { title: "Revit Python 助手", desc: "專門撰寫 Revit API 2.7 語法代碼", category: "開發工具", link: "https://gemini.google.com/app", img: "gem2.jpg" },
+  { title: "花藝美學分析", desc: "分析插花構圖之線條與焦點", category: "創作輔助", link: "https://gemini.google.com/app", img: "gem3.jpg" },
+  { title: "Gem 04 標題", desc: "Gem 04 描述文字", category: "分類04", link: "https://gemini.google.com/app", img: "gem4.jpg" },
+  { title: "Gem 05 標題", desc: "Gem 05 描述文字", category: "分類05", link: "https://gemini.google.com/app", img: "gem5.jpg" },
+  { title: "Gem 06 標題", desc: "Gem 06 描述文字", category: "分類06", link: "https://gemini.google.com/app", img: "gem6.jpg" },
+  { title: "Gem 07 標題", desc: "Gem 07 描述文字", category: "分類07", link: "https://gemini.google.com/app", img: "gem7.jpg" },
+  { title: "Gem 08 標題", desc: "Gem 08 描述文字", category: "分類08", link: "https://gemini.google.com/app", img: "gem8.jpg" },
+  { title: "Gem 09 標題", desc: "Gem 09 描述文字", category: "分類09", link: "https://gemini.google.com/app", img: "gem9.jpg" },
+  { title: "Gem 10 標題", desc: "Gem 10 描述文字", category: "分類10", link: "https://gemini.google.com/app", img: "gem10.jpg" },
+  { title: "Gem 11 標題", desc: "Gem 11 描述文字", category: "分類11", link: "https://gemini.google.com/app", img: "gem11.jpg" },
+  { title: "Gem 12 標題", desc: "Gem 12 描述文字", category: "分類12", link: "https://gemini.google.com/app", img: "gem12.jpg" },
+  { title: "Gem 13 標題", desc: "Gem 13 描述文字", category: "分類13", link: "https://gemini.google.com/app", img: "gem13.jpg" },
+  { title: "Gem 14 標題", desc: "Gem 14 描述文字", category: "分類14", link: "https://gemini.google.com/app", img: "gem14.jpg" },
+  { title: "Gem 15 標題", desc: "Gem 15 描述文字", category: "分類15", link: "https://gemini.google.com/app", img: "gem15.jpg" },
+  { title: "Gem 16 標題", desc: "Gem 16 描述文字", category: "分類16", link: "https://gemini.google.com/app", img: "gem16.jpg" },
+  { title: "Gem 17 標題", desc: "Gem 17 描述文字", category: "分類17", link: "https://gemini.google.com/app", img: "gem17.jpg" },
+  { title: "Gem 18 標題", desc: "Gem 18 描述文字", category: "分類18", link: "https://gemini.google.com/app", img: "gem18.jpg" },
+  { title: "Gem 19 標題", desc: "Gem 19 描述文字", category: "分類19", link: "https://gemini.google.com/app", img: "gem19.jpg" },
+  { title: "Gem 20 標題", desc: "Gem 20 描述文字", category: "分類20", link: "https://gemini.google.com/app", img: "gem20.jpg" },
+  { title: "Gem 21 標題", desc: "Gem 21 描述文字", category: "分類21", link: "https://gemini.google.com/app", img: "gem21.jpg" },
+  { title: "Gem 22 標題", desc: "Gem 22 描述文字", category: "分類22", link: "https://gemini.google.com/app", img: "gem22.jpg" },
+  { title: "Gem 23 標題", desc: "Gem 23 描述文字", category: "分類23", link: "https://gemini.google.com/app", img: "gem23.jpg" },
+  { title: "Gem 24 標題", desc: "Gem 24 描述文字", category: "分類24", link: "https://gemini.google.com/app", img: "gem24.jpg" },
+  { title: "Gem 25 標題", desc: "Gem 25 描述文字", category: "分類25", link: "https://gemini.google.com/app", img: "gem25.jpg" },
+  { title: "Gem 26 標題", desc: "Gem 26 描述文字", category: "分類26", link: "https://gemini.google.com/app", img: "gem26.jpg" },
+  { title: "Gem 27 標題", desc: "Gem 27 描述文字", category: "分類27", link: "https://gemini.google.com/app", img: "gem27.jpg" },
+  { title: "Gem 28 標題", desc: "Gem 28 描述文字", category: "分類28", link: "https://gemini.google.com/app", img: "gem28.jpg" },
+  { title: "Gem 29 標題", desc: "Gem 29 描述文字", category: "分類29", link: "https://gemini.google.com/app", img: "gem29.jpg" },
+  { title: "Gem 30 標題", desc: "Gem 30 描述文字", category: "分類30", link: "https://gemini.google.com/app", img: "gem30.jpg" },
+];
+
+const grid = document.getElementById("grid");
+const filtersEl = document.getElementById("filters");
+const searchInput = document.getElementById("searchInput");
+
+// 建立分類清單（全部 + 各分類，含數量）
+const categoryCounts = {};
+GEMS.forEach(g => { categoryCounts[g.category] = (categoryCounts[g.category] || 0) + 1; });
+const categories = ["全部", ...Object.keys(categoryCounts)];
+
+let activeCategory = "全部";
+
+function renderFilters() {
+  filtersEl.innerHTML = "";
+  categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (cat === activeCategory ? " active" : "");
+    const count = cat === "全部" ? GEMS.length : categoryCounts[cat];
+    btn.textContent = cat === "全部" ? `全部 ${count}` : `${cat} ${count}`;
+    btn.onclick = () => { activeCategory = cat; renderFilters(); renderGrid(); };
+    filtersEl.appendChild(btn);
+  });
+}
+
+function renderGrid() {
+  const keyword = searchInput.value.trim().toLowerCase();
+  grid.innerHTML = "";
+  GEMS.forEach(gem => {
+    const matchesCategory = activeCategory === "全部" || gem.category === activeCategory;
+    const matchesSearch = !keyword ||
+      gem.title.toLowerCase().includes(keyword) ||
+      gem.desc.toLowerCase().includes(keyword);
+    if (!matchesCategory || !matchesSearch) return;
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.className = "thumb";
+    img.src = GITHUB_RAW + gem.img;
+    img.alt = gem.title;
+    img.loading = "lazy";
+    img.onerror = function () { this.style.background = "#E5E7EB"; this.removeAttribute("src"); };
+
+    const body = document.createElement("div");
+    body.className = "body";
+    body.innerHTML = `
+      <div class="category">${gem.category}</div>
+      <h3 class="title">${gem.title}</h3>
+      <p class="desc">${gem.desc}</p>
+      <a class="launch" href="${gem.link}" target="_blank" rel="noopener">啟動此 Gem →</a>
+    `;
+
+    card.appendChild(img);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
+
+searchInput.addEventListener("input", renderGrid);
+
+renderFilters();
+renderGrid();
+</script>
+
+</body>
+</html>
