@@ -1,5 +1,6 @@
 ## 下載程式介紹
 
+>直接按下連結下笧
 📦[afabim_tutoria(260825).zip](https://raw.githubusercontent.com/afabim/afabim-office/main/afabim_tutoria%28260825%29.zip)
 
 >afabim_tutoria(260825).zip
