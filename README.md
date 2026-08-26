@@ -1,6 +1,6 @@
 ## 下載程式介紹
 
-📦 [afabim_tutoria(260825).zip](afabim_tutoria(260825).zip)
+📦[afabim_tutoria(260825).zip](https://raw.githubusercontent.com/afabim/afabim-office/main/afabim_tutoria%28260825%29.zip)
 
 >afabim_tutoria(260825).zip
 - 內含 afabim教學.exe 與 afabim教學.txt
