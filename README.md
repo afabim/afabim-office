@@ -4,7 +4,7 @@
 📦[afabim_tutoria(260826).zip](https://raw.githubusercontent.com/afabim/afabim-office/main/afabim_tutoria%28260826%29.zip)
 
 >afabim_tutoria(260826).zip
-- 內含 afabim教學.exe 
+- 內含 **afabim教學.exe 
        afabim教學.txt
        afabim教學操作說明.pdf
     三個檔案
