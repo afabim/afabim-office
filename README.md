@@ -6,7 +6,7 @@
 >afabim_tutoria(260826).zip
 - 內含 afabim教學.exe 
                afabim教學.txt
-               afabim教學操作說明.pdf
+               afabim教學操作說明.pdf\n
     是搭配教學 YouTube 影片使用的操作工具。
 
 - afabim教學.exe 與 afabim教學.txt
