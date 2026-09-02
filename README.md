@@ -12,6 +12,16 @@
 
 - afabim教學.exe 與 afabim教學.txt
   兩個檔案放在同一目錄下才能正常執行
+-afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉   
+---
+---
+Afabim是在Revit 2024與pyrevit v5下開發
+其功能架構在pyrevit平台,必須先安裝pyrevit
+pyrevit是revit 免費api,本身也提供很多工具給
+revit使用
+(pyrevit相關知識可在google查找)
+Pyrevit v5下載位置
+[github.com/pyrev…](https://github.com/pyrevitlabs/pyRevit/releases?page=2#release-v5.1.0.25094+1017)
 ---
 ---
 # Afabim(總介紹)
