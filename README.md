@@ -13,7 +13,10 @@
 - afabim教學.exe 與 afabim教學.txt
   兩個檔案放在同一目錄下才能正常執行
   
-- afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉   
+- afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉
+- 
+- 可改使用web brower線上觀看
+  https://afabim.github.io/afabim-office/afabim-tutorial.html 
 ---
 ---
 - Afabim是在Revit 2024與pyrevit v5下開發
