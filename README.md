@@ -15,7 +15,7 @@
 -afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉   
 ---
 ---
->Afabim是在Revit 2024與pyrevit v5下開發
+Afabim是在Revit 2024與pyrevit v5下開發
 其功能架構在pyrevit平台,必須先安裝pyrevit
 pyrevit是revit 免費api,本身也提供很多工具給
 revit使用
