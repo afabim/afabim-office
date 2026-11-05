@@ -18,7 +18,7 @@
 
 - 可改使用 Web Browser 線上觀看：
   
-[afabim 線上教學網頁](https://afabim.github.io/afabim-office/afabim-tutorial.html)
+   [afabim 線上教學網頁](https://afabim.github.io/afabim-office/afabim-tutorial.html)
 
 ---
 ---
