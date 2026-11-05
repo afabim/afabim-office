@@ -17,7 +17,7 @@
   
 - 可改使用web brower線上觀看
    
-(https://afabim.github.io/afabim-office/afabim-tutorial.html)
+https://afabim.github.io/afabim-office/afabim-tutorial.html
 ---
 ---
 - Afabim是在Revit 2024與pyrevit v5下開發
