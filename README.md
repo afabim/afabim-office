@@ -15,9 +15,9 @@
   
 - afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉
   
-- 可改使用web brower線上觀看
-  
-https://afabim.github.io/afabim-office/afabim-tutorial.html
+- 可改使用 Web Browser 線上觀看：
+[afabim 線上教學網頁](https://afabim.github.io/afabim-office/afabim-tutorial.html)
+
 ---
 ---
 - Afabim是在Revit 2024與pyrevit v5下開發
