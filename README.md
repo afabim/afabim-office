@@ -19,7 +19,7 @@
 - 可改使用 Web Browser 線上觀看：
   
    [afabim 線上教學網頁](https://afabim.github.io/afabim-office/afabim-tutorial.html)
--若上方連結無法開啟，請改用備用網址：
+- 若上方連結無法開啟，請改用備用網址：
 
   [afabim 線上教學網頁（備用）](https://afabim-office.pages.dev/afabim-tutorial)
 ---
