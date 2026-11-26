@@ -1,7 +1,7 @@
 ## 下載程式介紹
 - Afabim 官方信箱
   
-revit.afabim@gmail.com
+ revit.afabim@gmail.com
 
 ---
 
@@ -21,7 +21,7 @@ revit使用
 
 - Pyrevit v5下載位置
 
-[github.com/pyrev…](https://github.com/pyrevitlabs/pyRevit/releases?page=2#release-v5.1.0.25094+1017)
+  [github.com/pyrev…](https://github.com/pyrevitlabs/pyRevit/releases?page=2#release-v5.1.0.25094+1017)
 ---
 ---
 # Afabim(總介紹)
