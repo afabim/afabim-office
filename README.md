@@ -1,7 +1,7 @@
 ## 下載程式介紹
 - Afabim 官方信箱
   
- revit.afabim@gmail.com
+    revit.afabim@gmail.com
 
 ---
 
