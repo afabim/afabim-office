@@ -1,22 +1,10 @@
 ## 下載程式介紹
+-Afabim 官方信箱
+revit.afabim@gmail.com
 
->直接按此連結下載
-📦[afabim_tutoria(260826).zip](https://raw.githubusercontent.com/afabim/afabim-office/main/afabim_tutorial%28260826%29.zip)
+---
 
->afabim_tutoria(260826).zip
-- 內含 afabim教學.exe 
-       afabim教學.txt
-       afabim教學操作說明.pdf
-    三個檔案
-    是搭配教學 YouTube 影片使用的操作工具。
-
-- afabim教學.exe 與 afabim教學.txt
-  兩個檔案放在同一目錄下才能正常執行
-  
-- afabim_tutoria(260826).zip因為含有*.exe檔,下載儲存會誤判有病毒,要把掃毒關掉
-  
-
-- 可改使用 Web Browser 線上觀看：
+-  Web Browser 線上觀看：
   
    [afabim 線上教學網頁](https://afabim.github.io/afabim-office/afabim-tutorial.html)
 - 若上方連結無法開啟，請改用備用網址：
